@@ -1,4 +1,5 @@
 const express = require('express')
+const bcrypt = require('bcrypt-nodejs')
 
 const app = express()
 app.use(express.json())
@@ -20,14 +21,32 @@ const database = {
       entries: 0,
       joined: new Date()
     }
+  ],
+  login: [
+    {
+      id: '987',
+      hash: '',
+      email: 'john@gmail.com'
+    }
   ]
-}
 
+  }
+  
 app.get('/', (req, res)=> {
   res.send(database.users)
 })
 
 app.post('/signin', (req, res) => {
+
+// Load hash from your password DB.
+bcrypt.compare("apples", '$2a$10$v3Gns8nZEounmZIaNVPhG.uLK0d/sNz4t6cWdOZT9vkdI7Bnx3RIq', function(err, res) {
+  // res == true
+  console.log("first guess", res)
+});
+bcrypt.compare("veggies", '$2a$10$v3Gns8nZEounmZIaNVPhG.uLK0d/sNz4t6cWdOZT9vkdI7Bnx3RIq', function(err, res) {
+  // res = false
+  console.log("wrong guess", res)
+});
   if (req.body.email === database.users[0].email &&
       req.body.password === database.users[0].password) {
     res.json('success')
@@ -38,6 +57,9 @@ app.post('/signin', (req, res) => {
 
 app.post('/register', (req, res) => {
   const { email, name, password } = req.body
+  bcrypt.hash(password, null, null, function(err, hash) {
+    console.log(hash)
+  });
   database.users.push({
     id: '125',
     name: name,
@@ -77,6 +99,9 @@ app.put('/image', (req, res) => {
     res.status(400).json('not found')
   }
 })
+
+
+
 
 app.listen(3000, () => { 
   console.log('app is running. port 3000')
