@@ -8,6 +8,8 @@
     "@testing-library/user-event": "^7.2.1",
     "bcrypt-nodejs": "0.0.3",
     "cors": "^2.8.5",
+    "knex": "^0.20.13",
+    "pg": "^8.0.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-scripts": "3.4.1"
