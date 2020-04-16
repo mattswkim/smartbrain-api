@@ -1,9 +1,10 @@
 const Clarifai = require('clarifai');
 
-// getting api key
+// getting api key from the server
 const app = new Clarifai.App({
   apiKey: process.env.API_CLARIFAI_KEY
 });
+
 const handleApiCall =(req, res) => {
   app.models
   .predict(Clarifai.DEMOGRAPHICS_MODEL, req.body.input)

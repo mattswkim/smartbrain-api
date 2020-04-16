@@ -8,6 +8,7 @@ const handleSignin = (req, res, db, bcrypt) => {
   .where('email', '=', email)
   .then(data => {
     data[0]
+    // compare input password to hash 
     const isValid = bcrypt.compareSync(password, data[0].hash)
     if (isValid) {
       return db.select('*')
@@ -18,6 +19,7 @@ const handleSignin = (req, res, db, bcrypt) => {
       })
       .catch(err => res.status(400).json('unable to get user'))
     } else{
+      // wrong password
       res.status(400).json('wrong credentials')
 
     }

@@ -42,33 +42,3 @@ app.post('/imageurl', (req, res) => { image.handleApiCall(req, res)})
 app.listen(process.env.PORT || 3000, () => { 
   console.log(`app is running. port ${process.env.PORT}`)
 })
-
-// old code 
-// const database = {
-//   users: [
-//     {
-//       id: '123',
-//       name: 'john',
-//       email: 'john@gmail.com',
-//       password: 'cookies',
-//       entries: 0,
-//       joined: new Date()
-//     },
-//     {
-//       id: '124',
-//       name: 'sally',
-//       email: 'sally@gmail.com',
-//       password: 'bananas',
-//       entries: 0,
-//       joined: new Date()
-//     }
-//   ],
-//   login: [
-//     {
-//       id: '987',
-//       hash: '',
-//       email: 'john@gmail.com'
-//     }
-//   ]
-
-//   }
