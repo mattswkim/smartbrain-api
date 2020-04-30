@@ -1,5 +1,7 @@
 const express = require('express')
+// Encrypt the password
 const bcrypt = require('bcrypt-nodejs')
+// Croo-Origin_Resouce_Sharing
 const cors = require('cors')
 // SQL query builder for JS
 const knex = require('knex');
